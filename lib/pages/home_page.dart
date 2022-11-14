@@ -11,14 +11,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My First App"),
+        title: const Text("My First App"),
       ),
       body: Center(
         child: Container(
           child: Text("WELCOME TO $days DAYS OF FLUTTER BY $name"),
         ),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
     );
   }
 }

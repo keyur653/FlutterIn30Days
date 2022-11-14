@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          child: Text("WELCOME TO $days DAYS OF FLUTTER BY $name"),
+          child: Text(context.runtimeType.toString()),
         ),
       ),
       drawer: const MyDrawer(),

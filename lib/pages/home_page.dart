@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 2));
     var catalogJson = await rootBundle.loadString("assets/files/catalog.json");
     var decocdedData = jsonDecode(catalogJson);
     var productsData = decocdedData["products"];
@@ -44,11 +44,42 @@ class _HomePageState extends State<HomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
-            ? ListView.builder(
-                itemCount: CatalogModel.items?.length,
-                itemBuilder: (context, index) => ItemWidget(
-                  item: CatalogModel.items![index],
-                ),
+            ? GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10),
+                itemBuilder: (context, index) {
+                  final item = CatalogModel.items![index];
+                  return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: GridTile(
+                        header: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                            ),
+                            child: Text(
+                              item.name,
+                              style: TextStyle(color: Colors.black),
+                            )),
+                        child: Image.network(item.image),
+                        footer: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                            ),
+                            child: Text(
+                              item.price.toString(),
+                              style: TextStyle(
+                                color: Colors.amber,
+                              ),
+                            )),
+                      ));
+                },
+                itemCount: CatalogModel.items!.length,
               )
             : Center(
                 child: CircularProgressIndicator(),

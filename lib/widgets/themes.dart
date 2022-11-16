@@ -14,7 +14,9 @@ class MyTheme {
         color: Colors.white,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.black),
-        textTheme: Theme.of(context).textTheme,
+        textTheme: Theme.of(context).textTheme.copyWith(
+            headline6:
+                context.textTheme.headline6?.copyWith(color: Colors.black)),
       ));
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
@@ -25,10 +27,11 @@ class MyTheme {
       accentColor: Colors.white,
       fontFamily: GoogleFonts.poppins().fontFamily,
       appBarTheme: AppBarTheme(
-        color: Colors.black,
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white),
-        textTheme: Theme.of(context).textTheme,
+        textTheme: Theme.of(context).textTheme.copyWith(
+            headline6:
+                context.textTheme.headline6?.copyWith(color: Colors.white)),
       ));
 
   //Colors

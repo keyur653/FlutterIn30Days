@@ -14,9 +14,9 @@ class HomeDetialPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: Colors.white,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: MyTheme.creamColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -31,8 +31,8 @@ class HomeDetialPage extends StatelessWidget {
                   shape: MaterialStateProperty.all(
                     StadiumBorder(),
                   )),
-              child: "Buy".text.make(),
-            ).wh(100, 50)
+              child: "Add to Cart".text.make(),
+            ).wh(115, 50)
           ],
         ).p32(),
       ),
@@ -50,7 +50,7 @@ class HomeDetialPage extends StatelessWidget {
               edge: VxEdge.TOP,
               child: Container(
                 height: 10.0,
-                color: Colors.white,
+                color: MyTheme.creamColor,
                 width: context.screenWidth,
                 child: Column(
                   children: [
@@ -60,6 +60,11 @@ class HomeDetialPage extends StatelessWidget {
                         .make(),
                     catalog.desc.text.textStyle(context.captionStyle).make(),
                     10.heightBox,
+                    "Labore lorem diam elitr gubergren sit sadipscing dolor elitr. Gubergren dolores vero et diam elitr dolore, diam voluptua et sadipscing."
+                        .text
+                        .textStyle(context.captionStyle)
+                        .make()
+                        .p16()
                   ],
                 ).py64(),
               ),
